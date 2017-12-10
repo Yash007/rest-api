@@ -6,19 +6,18 @@
     keywords: RESTFull API development
 */
 
-var express = require('express');
+var express = require('express'),
+users = require('./routes/users');
+
 var app = express();
 
-//Get Method for users
-app.get('/users', function(req, res) {
-    res.send([{name:'Yash'}, {name:'Sompura'}]);
-});
 
-//Get Method for users by ID
-app.get('/users/:id', function(req, res) {
-    res.send({id:req.params.id, name: "Yash Sompura", description: "Node JS API Developer"});
-});
+//GET METHOD FOR GETTING ALL USERS FROM DATABASE
+app.get('/users', users.findAll);
 
-app.listen(3000,'127.0.0.1');
 
-console.log('Server running at http://127.0.0.1:3000/');
+//GET METHOD FOR GETTING USERS BY ID FROM DATABASE
+app.get('/users/:id', users.findById);
+
+app.listen(3000);
+console.log('Listening on port 3000...');
