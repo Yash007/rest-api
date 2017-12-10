@@ -7,7 +7,8 @@
 */
 
 var express = require('express'),
-users = require('./routes/users');
+users = require('./routes/users'),
+patients = require('./routes/patients');
 
 var app = express();
 
@@ -23,10 +24,14 @@ app.get('/users', users.findAll);
 //GET METHOD FOR GETTING USERS BY ID FROM DATABASE
 app.get('/users/:id', users.findById);
 
-
 app.post('/users', users.addUser);
+
 app.put('/users/:id', users.updateUser);
+
 app.delete('/users/:id', users.deleteUser);
+
+//GET METHOD FOR GETTING PATIENTS DETAILS
+app.get('/patients', patients.findAll);
 
 //App will listen on port 3000 and http route by 127.0.0.1
 app.listen(3000, '127.0.0.1');
