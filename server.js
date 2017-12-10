@@ -6,9 +6,19 @@
     keywords: RESTFull API development
 */
 
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(3000, '127.0.0.1');
+var express = require('express');
+var app = express();
+
+//Get Method for users
+app.get('/users', function(req, res) {
+    res.send([{name:'Yash'}, {name:'Sompura'}]);
+});
+
+//Get Method for users by ID
+app.get('/users/:id', function(req, res) {
+    res.send({id:req.params.id, name: "Yash Sompura", description: "Node JS API Developer"});
+});
+
+app.listen(3000,'127.0.0.1');
+
 console.log('Server running at http://127.0.0.1:3000/');
