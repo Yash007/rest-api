@@ -40,7 +40,7 @@ exports.findAll = function(req, res) {
 
 exports.addPatient = function(req, res) {
     var patient = req.body;
-    console.log('Adding patients: ' + JSON.stringify(user));
+    console.log('Adding patients: ' + JSON.stringify(patient));
     db.collection('patients', function(err, collection) {
         collection.insert(patient, {safe:true}, function(err, result) {
             if (err) {
@@ -53,12 +53,12 @@ exports.addPatient = function(req, res) {
     });
 }
 
-exports.updateUser = function(req, res) {
+exports.updatePatient = function(req, res) {
     var id = req.params.id;
     var patient = req.body;
     console.log('Updating patient: ' + id);
     console.log(JSON.stringify(patient));
-    db.collection('patient', function(err, collection) {
+    db.collection('patients', function(err, collection) {
         collection.update({'_id':new mongo.ObjectID(id)}, patient, {safe:true}, function(err, result) {
             if (err) {
                 console.log('Error updating patient: ' + err);
@@ -71,10 +71,10 @@ exports.updateUser = function(req, res) {
     });
 }
 
-exports.deleteUser = function(req, res) {
+exports.deletePatient = function(req, res) {
     var id = req.params.id;
     console.log('Deleting patient: ' + id);
-    db.collection('patient', function(err, collection) {
+    db.collection('patients', function(err, collection) {
         collection.remove({'_id':new mongo.ObjectID(id)}, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred - ' + err});

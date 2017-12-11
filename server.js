@@ -17,6 +17,7 @@ app.configure(function () {
   app.use(express.bodyParser());
 });
 
+/* ------------------- USERS SECTION -------------------- */
 //GET METHOD FOR GETTING ALL USERS FROM DATABASE
 app.get('/users', users.findAll);
 
@@ -32,18 +33,21 @@ app.put('/users/:id', users.updateUser);
 //DELETE METHOD FOR DELETING USERS FROM DATABASE
 app.delete('/users/:id', users.deleteUser);
 
+/* ------------------- PATIENTS SECTION -------------------- */
 //GET METHOD FOR GETTING PATIENTS DETAILS
 app.get('/patients', patients.findAll);
 
-app.post('/patients', users.addUser);
-
-app.put('/patients/:id', users.updateUser);
-
-app.delete('/patients/:id', users.deleteUser);
-
-
 //GET METHOD FOR GETTING PATIENT BY ID FROM DATABASE
 app.get('/patients/:id', patients.findById);
+
+//POST METHOD FOR ADDING NEW PATIENT
+app.post('/patients', patients.addPatient);
+
+//PUT METHOD FOR UPDATING PATIENT'S DETAILS
+app.put('/patients/:id', patients.updatePatient);
+
+//DELETE METHOD FOR DELETE PATIENT FROM DATABASE
+app.delete('/patients/:id', patients.deletePatient);
 
 
 
