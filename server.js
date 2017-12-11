@@ -52,6 +52,8 @@ app.put('/patients/:id', patients.updatePatient);
 //DELETE METHOD FOR DELETE PATIENT FROM DATABASE
 app.delete('/patients/:id', patients.deletePatient);
 
+//post method for inserting Record
+app.post('/patients/:id/records',patients.addRecord);
 
 
 //App will listen on port 3000 and http route by 127.0.0.1

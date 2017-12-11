@@ -100,3 +100,32 @@ exports.deletePatient = function(req, res) {
         });
     });
 }
+
+//insert records to specific user
+exports.addRecord = function(req, res)  {
+    var userId = req.params.id;
+    var record = req.body;
+
+    console.log('Insert record for User Id : '+ userId);
+    console.log("Suger" + record.heartBeatRate);
+    db.collection('patients', function(err, collection) {
+        collection.update(
+            {'_id':new mongo.ObjectID(userId)},
+            {
+                '$push':    {
+                    'pClinicalData':    {
+                        'sugarLevel':record.sugarLevel,
+                        'heartBeatRate':record.heartBeatRate
+                    }
+                }
+            },
+            function(err, result)  {
+                if(err) {
+                    console.log(err);
+                }
+                res.send(result);
+            }
+        );
+    });
+}
+
