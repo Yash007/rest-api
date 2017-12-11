@@ -33,6 +33,9 @@ app.put('/users/:id', users.updateUser);
 //DELETE METHOD FOR DELETING USERS FROM DATABASE
 app.delete('/users/:id', users.deleteUser);
 
+//POST METHOD FOR LOGIN INTO THE SYSTEM
+app.post('/users/login', users.login);
+
 /* ------------------- PATIENTS SECTION -------------------- */
 //GET METHOD FOR GETTING PATIENTS DETAILS
 app.get('/patients', patients.findAll);

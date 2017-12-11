@@ -94,3 +94,23 @@ exports.deleteUser = function(req, res) {
         });
     });
 }
+
+exports.login = function(req, res)  {
+    var userId = req.body.userId;
+    var hashCode = req.body.hashCode;
+
+    console.log('Login User Password : ' + hashCode);
+    db.collection('users', function(err, collection) {
+        collection.findOne({'uEmail': userId, 'uPassword':hashCode}, function(err, item)  {
+            if(err) {
+                console.log("ERROR");
+            }
+            if(!item)   {
+                res.send({status: 0, msg: "Incorrect ID and Password"});
+            }
+            else    {
+                res.send({status: 1,item, message: "success"});
+            }
+        });
+    });
+}
