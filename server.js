@@ -24,8 +24,10 @@ app.get('/users', users.findAll);
 //GET METHOD FOR GETTING USERS BY ID FROM DATABASE
 app.get('/users/:id', users.findById);
 
+//POST METHOD FOR ADDING USER IN DATABASE
 app.post('/users', users.addUser);
 
+//POST METHOD FOR UPDATING USERS IN DATABASE BY THEIR ID
 app.put('/users/:id', users.updateUser);
 
 app.delete('/users/:id', users.deleteUser);
