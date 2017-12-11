@@ -16,6 +16,7 @@ var Server = mongo.Server,
 var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db('patient-clinical-data-management', server);
 
+//Open connection with database
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'patient-clinical-data-management' database");
@@ -27,6 +28,7 @@ db.open(function(err, db) {
     }
 });
 
+//find users by his/her ID from database
 exports.findById = function(req, res) {
     var id = req.params.id;
     db.collection('users', function(err, collection) {
@@ -39,6 +41,7 @@ exports.findById = function(req, res) {
     });
 };
 
+//find all users from database
 exports.findAll = function(req, res) {
     db.collection('users', function(err, collection) {
         collection.find().toArray(function(err, items) {
@@ -47,6 +50,7 @@ exports.findAll = function(req, res) {
     });
 };
 
+//add New User into the record
 exports.addUser = function(req, res) {
     var user = req.body;
     console.log('Adding user: ' + JSON.stringify(user));
@@ -62,6 +66,8 @@ exports.addUser = function(req, res) {
     });
 }
 
+
+//Update user by his/her id and requested field.
 exports.updateUser = function(req, res) {
     var id = req.params.id;
     var user = req.body;
@@ -80,6 +86,8 @@ exports.updateUser = function(req, res) {
     });
 }
 
+
+//delete user by his/her id from database
 exports.deleteUser = function(req, res) {
     var id = req.params.id;
     console.log('Deleting user: ' + id);
@@ -95,6 +103,8 @@ exports.deleteUser = function(req, res) {
     });
 }
 
+
+//login system for user
 exports.login = function(req, res)  {
     var userId = req.body.userId;
     var hashCode = req.body.hashCode;
@@ -109,7 +119,7 @@ exports.login = function(req, res)  {
                 res.send({status: 0, msg: "Incorrect ID and Password"});
             }
             else    {
-                res.send({status: 1,item, message: "success"});
+                res.send({status: 1,item, message: "Success"});
             }
         });
     });
