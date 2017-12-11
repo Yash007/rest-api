@@ -20,7 +20,6 @@ db.open(function(err, db) {
 
 exports.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving users: ' + id);
     db.collection('users', function(err, collection) {
         collection.findOne({'_id':new mongo.ObjectID(id)}, function(err, item)  {
             if(err) {
