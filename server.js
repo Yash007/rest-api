@@ -20,7 +20,6 @@ app.configure(function () {
 //GET METHOD FOR GETTING ALL USERS FROM DATABASE
 app.get('/users', users.findAll);
 
-
 //GET METHOD FOR GETTING USERS BY ID FROM DATABASE
 app.get('/users/:id', users.findById);
 
@@ -30,6 +29,7 @@ app.post('/users', users.addUser);
 //POST METHOD FOR UPDATING USERS IN DATABASE BY THEIR ID
 app.put('/users/:id', users.updateUser);
 
+//DELETE METHOD FOR DELETING USERS FROM DATABASE
 app.delete('/users/:id', users.deleteUser);
 
 //GET METHOD FOR GETTING PATIENTS DETAILS
