@@ -7,6 +7,7 @@ var Server = mongo.Server,
 var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db('patient-clinical-data-management', server);
 
+//open connection with database
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'patient-clinical-data-management' database");
@@ -18,6 +19,7 @@ db.open(function(err, db) {
     }
 });
 
+//find patients by ID
 exports.findById = function(req, res) {
     var id = req.params.id;
     db.collection('patients', function(err, collection) {
@@ -30,6 +32,7 @@ exports.findById = function(req, res) {
     });
 };
 
+//find all patients
 exports.findAll = function(req, res) {
     db.collection('patients', function(err, collection) {
         collection.find().toArray(function(err, items) {
@@ -38,6 +41,7 @@ exports.findAll = function(req, res) {
     });
 };
 
+//add patient method to add patients in records
 exports.addPatient = function(req, res) {
     var patient = req.body;
     console.log('Adding patients: ' + JSON.stringify(patient));
@@ -53,6 +57,7 @@ exports.addPatient = function(req, res) {
     });
 }
 
+//update patient method for updating records
 exports.updatePatient = function(req, res) {
     var id = req.params.id;
     var patient = req.body;
@@ -71,6 +76,7 @@ exports.updatePatient = function(req, res) {
     });
 }
 
+//Delete Patient method for deleting record
 exports.deletePatient = function(req, res) {
     var id = req.params.id;
     console.log('Deleting patient: ' + id);
