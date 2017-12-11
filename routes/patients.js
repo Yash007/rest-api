@@ -1,3 +1,12 @@
+/*
+    Project Name: Patient Data Clinical Management
+    Author: Yashkumar Sompura
+    College ID: 300967186
+    Subject: Node JS project
+    keywords: RESTFull API development
+    Description: Patients.js file provide all functionality of patients collection.
+*/
+
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
