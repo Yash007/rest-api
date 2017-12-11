@@ -42,7 +42,7 @@ exports.addUser = function(req, res) {
     var user = req.body;
     console.log('Adding user: ' + JSON.stringify(user));
     db.collection('users', function(err, collection) {
-        collection.insert(users, {safe:true}, function(err, result) {
+        collection.insert(user, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred'});
             } else {
