@@ -5,6 +5,7 @@
     Subject: Node JS project
     keywords: RESTFull API development
     Description: Patients.js file provide all functionality of patients collection.
+    Milestone - 2 - Dec 12, 2017
 */
 
 var mongo = require('mongodb');
