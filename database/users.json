@@ -1,0 +1,20 @@
+{ 
+    "_id" : ObjectId("5a245e1a3c1d2567a3bf8fbf"), 
+    "uFirstName" : "Yash", 
+    "uLastName" : "Sompura", 
+    "uDesignation" : "Doctor", 
+    "uEmail" : "yashsompura@gmail.com", 
+    "uDateOfBirth" : "1994-10-09", 
+    "uPassword" : "yashsompura007", 
+    "uBio" : "Heart Specialist"
+}
+{ 
+    "_id" : ObjectId("5a245e9c3c1d2567a3bf8fc0"), 
+    "uFirstName" : "ABC", 
+    "uLastName" : "XYZ", 
+    "uDesignation" : "Nurse", 
+    "uEmail" : "abc@gmail.com", 
+    "uDateOfBirth" : "1980-01-01", 
+    "uPassword" : "abc007", 
+    "uBio" : "Physiotherapist"
+}

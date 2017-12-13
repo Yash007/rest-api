@@ -1,0 +1,88 @@
+{ 
+    "_id" : ObjectId("5a245b66c6453b099650359a"), 
+    "pFirstName" : "Yashkumar", 
+    "pLastName" : "Sompura", 
+    "pEmail" : "sompurayash@live.com", 
+    "pDateOfBirth" : "1994-09-10", 
+    "pPhoneNumber" : "6479207670", 
+    "pAddress" : "2911 7 Crescent Place, Victoria Park", 
+    "pClinicalData" : [
+        {
+            "\"sugarLevel\"" : "50", 
+            "heartBeatRate" : "40"
+        }, 
+        {
+            "sugarLevel" : null, 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }
+    ]
+}
+{ 
+    "_id" : ObjectId("5a245ce63c1d2567a3bf8fbc"), 
+    "pFirstName" : "Kamalpreet", 
+    "pLastName" : "Singh", 
+    "pEmail" : "kamalpreet@gmail.com", 
+    "pDateOfBirth" : "1992-01-01", 
+    "pPhoneNumber" : "6471203121", 
+    "pAddress" : "11 Nootka, Etoiko", 
+    "pClinicalData" : [
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }, 
+        {
+            "sugarLevel" : NumberInt(50), 
+            "heartBeatRate" : NumberInt(65)
+        }
+    ]
+}
+{ 
+    "_id" : ObjectId("5a245d473c1d2567a3bf8fbd"), 
+    "pFirstName" : "Robert", 
+    "pLastName" : "Argume", 
+    "pEmail" : "robert.argume@gmail.com", 
+    "pDateOfBirth" : "1992-02-01", 
+    "pPhoneNumber" : "9876543210", 
+    "pAddress" : "McCown Road, Scarborough"
+}
+{ 
+    "_id" : ObjectId("5a245d803c1d2567a3bf8fbe"), 
+    "pFirstName" : "Fatih", 
+    "pLastName" : "Inan Mehmat", 
+    "pEmail" : "fatih@gmail.com", 
+    "pDateOfBirth" : "1992-03-01", 
+    "pPhoneNumber" : "1234567890", 
+    "pAddress" : "Downtown, Toronto"
+}
