@@ -5,6 +5,7 @@
     Subject: Node JS project
     keywords: RESTFull API development
     description: Users.js file for provide all functionality of users collection
+    Milestone - 2 - Dec 12, 2017
 */
 
 var mongo = require('mongodb');
@@ -54,6 +55,8 @@ exports.findAll = function(req, res) {
 exports.addUser = function(req, res) {
     var user = req.body;
     console.log('Adding user: ' + JSON.stringify(user));
+
+    
     db.collection('users', function(err, collection) {
         collection.insert(user, {safe:true}, function(err, result) {
             if (err) {
@@ -64,6 +67,8 @@ exports.addUser = function(req, res) {
             }
         });
     });
+
+    
 }
 
 

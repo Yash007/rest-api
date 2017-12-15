@@ -55,16 +55,26 @@ exports.findAll = function(req, res) {
 exports.addPatient = function(req, res) {
     var patient = req.body;
     console.log('Adding patients: ' + JSON.stringify(patient));
-    db.collection('patients', function(err, collection) {
-        collection.insert(patient, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('Success: ' + JSON.stringify(result[0]));
-                res.send(result[0]);
-            }
+
+    if(req.params.FirstName === "") {
+        res.send({"Status":"Error!!","Message":"FirstName Not Found"});
+    }
+    else if(req.params.LastName === "")   {
+        res.send({"Status":"Error!!","Message":"Last Not Found"});  
+    }
+    else    {
+        db.collection('patients', function(err, collection) {
+            collection.insert(patient, {safe:true}, function(err, result) {
+                if (err) {
+                    res.send({'error':'An error has occurred'});
+                } else {
+                    console.log('Success: ' + JSON.stringify(result[0]));
+                    res.send(result[0]);
+                }
+            });
         });
-    });
+    }
+    
 }
 
 //update patient method for updating records
