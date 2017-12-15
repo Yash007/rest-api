@@ -35,9 +35,14 @@ exports.findById = function(req, res) {
     db.collection('patients', function(err, collection) {
         collection.findOne({'_id':new mongo.ObjectID(id)}, function(err, item)  {
             if(err) {
-                console.log("ERROR");
+                res.send({"Status":"Error","Message":err});
             }
-            res.send(item);
+            else if(item.length == 0)  {
+                res.send({"Status":"Error","Message":"No Patient Data available."});
+            }
+            else    {
+                res.send(item);
+            }
         });
     });
 };
@@ -46,7 +51,15 @@ exports.findById = function(req, res) {
 exports.findAll = function(req, res) {
     db.collection('patients', function(err, collection) {
         collection.find().toArray(function(err, items) {
-            res.send(items);
+            if(err) {
+                res.send({"Status":"Error","Message":err});
+            }
+            else if(items.length == 0)  {
+                res.send({"Status":"Error","Message":"No Patient Data available."});
+            }
+            else    {
+                res.send(items);
+            }
         });
     });
 };
@@ -56,11 +69,41 @@ exports.addPatient = function(req, res) {
     var patient = req.body;
     console.log('Adding patients: ' + JSON.stringify(patient));
 
-    if(req.params.FirstName === "") {
+    if(patient.FirstName === undefined) {
         res.send({"Status":"Error!!","Message":"FirstName Not Found"});
     }
-    else if(req.params.LastName === "")   {
-        res.send({"Status":"Error!!","Message":"Last Not Found"});  
+    else if(patient.LastName == undefined)   {
+        res.send({"Status":"Error!!","Message":"LastName Not Found"});  
+    }
+    else if(patient.Address == undefined)   {
+        res.send({"Status":"Error!!","Message":"Address Found"});  
+    }
+    else if(patient.DateOfBirth == undefined)   {
+        res.send({"Status":"Error!!","Message":"DateOfBirth Not Found"});  
+    }
+    else if(patient.Telephone == undefined)   {
+        res.send({"Status":"Error!!","Message":"Telephone Not Found"});  
+    }
+    else if(patient.InsurancePlan == undefined)   {
+        res.send({"Status":"Error!!","Message":"InsurancePlan Not Found"});  
+    }
+    else if(patient.EmergencyContact == undefined)   {
+        res.send({"Status":"Error!!","Message":"EmergencyContact Not Found"});  
+    }
+    else if(patient.EmergencyContact.Name == undefined)   {
+        res.send({"Status":"Error!!","Message":"EmergencyContact.Name Not Found"});  
+    }
+    else if(patient.EmergencyContact.Relationship == undefined)   {
+        res.send({"Status":"Error!!","Message":"EmergencyContact.Relationship Not Found"});  
+    }
+    else if(patient.EmergencyContact.Telephone == undefined)   {
+        res.send({"Status":"Error!!","Message":"EmergencyContact.Telephone Not Found"});  
+    }
+    else if(patient.BloodType == undefined)   {
+        res.send({"Status":"Error!!","Message":"BloodType Not Found"});  
+    }
+    else if(patient.IsInCritcalCondition == undefined)   {
+        res.send({"Status":"Error!!","Message":"IsInCritcalCondition Not Found"});  
     }
     else    {
         db.collection('patients', function(err, collection) {
@@ -68,13 +111,11 @@ exports.addPatient = function(req, res) {
                 if (err) {
                     res.send({'error':'An error has occurred'});
                 } else {
-                    console.log('Success: ' + JSON.stringify(result[0]));
-                    res.send(result[0]);
+                    res.send({"Status":"Success","Message":"Patient has been added successfully"});
                 }
             });
         });
     }
-    
 }
 
 //update patient method for updating records
@@ -90,7 +131,7 @@ exports.updatePatient = function(req, res) {
                 res.send({'error':'An error has occurred'});
             } else {
                 console.log('' + result + ' document(s) updated');
-                res.send(patient);
+                res.send({patient});
             }
         });
     });
