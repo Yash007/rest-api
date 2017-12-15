@@ -56,6 +56,9 @@ app.delete('/patients/:id', patients.deletePatient);
 //post method for inserting Record
 app.post('/patients/:id/records',patients.addRecord);
 
+//GET METHOD FOR VIEWINF PATIENT'S RECORD
+app.get('/patients/:id/records', patients.findRecords);
+
 
 //App will listen on port 3000 and http route by 127.0.0.1
 app.listen(3000, '127.0.0.1');

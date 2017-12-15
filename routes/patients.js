@@ -199,8 +199,6 @@ exports.addRecord = function(req, res)  {
     var userId = req.params.id;
     var record = req.body;
 
-    console.log('Insert record for User Id : '+ userId);
-    console.log("Suger" + record.heartBeatRate);
     if(userId === undefined)    {
         res.send({"Status":"Error!!","Message":"userId Id Not Found"});
     }
@@ -248,3 +246,20 @@ exports.addRecord = function(req, res)  {
     } 
 }
 
+//find patients by ID
+exports.findRecords = function(req, res) {
+    var id = req.params.id;
+    db.collection('patients', function(err, collection) {
+        collection.findOne({'_id':new mongo.ObjectID(id)}, function(err, item)  {
+            if(err) {
+                res.send({"Status":"Error","Message":err});
+            }
+            else if(item.length == 0)  {
+                res.send({"Status":"Error","Message":"No Patient Data available."});
+            }
+            else    {
+                res.send(item.ClinicalData);
+            }
+        });
+    });
+};
