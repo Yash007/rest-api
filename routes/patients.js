@@ -124,17 +124,58 @@ exports.updatePatient = function(req, res) {
     var patient = req.body;
     console.log('Updating patient: ' + id);
     console.log(JSON.stringify(patient));
-    db.collection('patients', function(err, collection) {
-        collection.update({'_id':new mongo.ObjectID(id)}, patient, {safe:true}, function(err, result) {
-            if (err) {
-                console.log('Error updating patient: ' + err);
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('' + result + ' document(s) updated');
-                res.send({patient});
-            }
+    if(id === undefined)    {
+        res.send({"Status":"Error!!","Message":"Patient Id Not Found"});
+    }
+    else if(patient.FirstName === undefined) {
+        res.send({"Status":"Error!!","Message":"FirstName Not Found"});
+    }
+    else if(patient.LastName == undefined)   {
+        res.send({"Status":"Error!!","Message":"LastName Not Found"});  
+    }
+    else if(patient.Address == undefined)   {
+        res.send({"Status":"Error!!","Message":"Address Found"});  
+    }
+    else if(patient.DateOfBirth == undefined)   {
+        res.send({"Status":"Error!!","Message":"DateOfBirth Not Found"});  
+    }
+    else if(patient.Telephone == undefined)   {
+        res.send({"Status":"Error!!","Message":"Telephone Not Found"});  
+    }
+    else if(patient.InsurancePlan == undefined)   {
+        res.send({"Status":"Error!!","Message":"InsurancePlan Not Found"});  
+    }
+    else if(patient.EmergencyContact == undefined)   {
+        res.send({"Status":"Error!!","Message":"EmergencyContact Not Found"});  
+    }
+    else if(patient.EmergencyContact.Name == undefined)   {
+        res.send({"Status":"Error!!","Message":"EmergencyContact.Name Not Found"});  
+    }
+    else if(patient.EmergencyContact.Relationship == undefined)   {
+        res.send({"Status":"Error!!","Message":"EmergencyContact.Relationship Not Found"});  
+    }
+    else if(patient.EmergencyContact.Telephone == undefined)   {
+        res.send({"Status":"Error!!","Message":"EmergencyContact.Telephone Not Found"});  
+    }
+    else if(patient.BloodType == undefined)   {
+        res.send({"Status":"Error!!","Message":"BloodType Not Found"});  
+    }
+    else if(patient.IsInCritcalCondition == undefined)   {
+        res.send({"Status":"Error!!","Message":"IsInCritcalCondition Not Found"});  
+    }
+    else    {
+        db.collection('patients', function(err, collection) {
+            collection.update({'_id':new mongo.ObjectID(id)}, patient, {safe:true}, function(err, result) {
+                if (err) {
+                    console.log('Error updating patient: ' + err);
+                    res.send({'error':'An error has occurred'});
+                } else {
+                    console.log('' + result + ' document(s) updated');
+                    res.send({"Status":"Succes","Message":"Document has been updated successfully","Patient":patient});
+                }
+            });
         });
-    });
+    }
 }
 
 //Delete Patient method for deleting record
