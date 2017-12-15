@@ -201,24 +201,50 @@ exports.addRecord = function(req, res)  {
 
     console.log('Insert record for User Id : '+ userId);
     console.log("Suger" + record.heartBeatRate);
-    db.collection('patients', function(err, collection) {
-        collection.update(
-            {'_id':new mongo.ObjectID(userId)},
-            {
-                '$push':    {
-                    'pClinicalData':    {
-                        'sugarLevel':record.sugarLevel,
-                        'heartBeatRate':record.heartBeatRate
+    if(userId === undefined)    {
+        res.send({"Status":"Error!!","Message":"userId Id Not Found"});
+    }
+    else if(record.Practitioner === undefined)   {
+        res.send({"Status":"Error!!","Message":"Practitioner Id Not Found"});
+    }
+    else if (record.MedicalCenter ===  undefined)   {
+        res.send({"Status":"Error!!","Message":"MedicalCenter Id Not Found"});
+    }
+    else if(record.DateTime === undefined)  {
+        res.send({"Status":"Error!!","Message":"DateTime Id Not Found"});
+    }
+    else if(record.DataType ===  undefined) {
+        res.send({"Status":"Error!!","Message":"DataType Id Not Found"});
+    }
+    else if(record.Reading === undefined)   {
+        res.send({"Status":"Error!!","Message":"Reading Id Not Found"});
+    }
+    else    {
+        db.collection('patients', function(err, collection) {
+            collection.update(
+                {'_id':new mongo.ObjectID(userId)},
+                {
+                    '$push':    {
+                        'ClinicalData':    {
+                            'Practitioner' : record.Practitioner,
+                            'MedicalCenter':record.MedicalCenter,
+                            'DateTime':record.DateTime,
+                            'DataType':record.DataType,
+                            'Reading': record.Reading
+                        }
+                    }
+                },
+                function(err, result)  {
+                    if(err) {
+                        console.log(err);
+                        res.send({"Status":"Success","Message":err});
+                    }
+                    else    {
+                        res.send({"Status":"Success","Message":"Record has been added successfully","ClinicalData":record});
                     }
                 }
-            },
-            function(err, result)  {
-                if(err) {
-                    console.log(err);
-                }
-                res.send(result);
-            }
-        );
-    });
+            );
+        });
+    } 
 }
 
