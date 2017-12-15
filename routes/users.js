@@ -6,6 +6,9 @@
     keywords: RESTFull API development
     description: Users.js file for provide all functionality of users collection
     Milestone - 2 - Dec 12, 2017
+    Note: SHA1 encryption code taken from
+            http://coursesweb.net/javascript/sha1-encrypt-data_cs
+
 */
 
 var mongo = require('mongodb');
