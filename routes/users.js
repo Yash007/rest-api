@@ -17,7 +17,9 @@ var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
+//var server = new Server('localhost', 27017, {auto_reconnect: true});
+var dbPath = "yash:9276807345@ds059207.mlab.com"
+var server = new Server(dbPath, 59207, {auto_reconnect: true});
 db = new Db('patient-clinical-data-management', server);
 
 //Open connection with database
