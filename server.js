@@ -62,5 +62,5 @@ app.get('/patients/:id/records', patients.findRecords);
 
 //App will listen on port 3000 and http route by 127.0.0.1
 //app.listen(3000, '127.0.0.1');
-app.listen(8080,'https://patient-clinical-data.herokuapp.com/');
+app.listen(8080);
 console.log('Server running at http://127.0.0.1:3000/');
