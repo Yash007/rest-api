@@ -22,6 +22,9 @@ app.configure(function () {
 //GET METHOD FOR GETTING ALL USERS FROM DATABASE
 app.get('/users', users.findAll);
 
+//GET METHOD FOR GETTING ALL USERS FROM DATABASE
+app.get('/nurses', users.findNurseAll);
+
 //GET METHOD FOR GETTING USERS BY ID FROM DATABASE
 app.get('/users/:id', users.findById);
 
@@ -61,6 +64,6 @@ app.get('/patients/:id/records', patients.findRecords);
 
 
 //App will listen on port 3000 and http route by 127.0.0.1
-//app.listen(3000, '127.0.0.1');
-app.listen(8080);
+app.listen(3000, '127.0.0.1');
+//app.listen(8080);
 console.log('Server running at http://127.0.0.1:3000/');

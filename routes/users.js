@@ -17,9 +17,9 @@ var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
 
-//var server = new Server('localhost', 27017, {auto_reconnect: true});
-var dbPath = "yash:9276807345@ds059207.mlab.com"
-var server = new Server(dbPath, 59207, {auto_reconnect: true});
+var server = new Server('localhost', 27017, {auto_reconnect: true});
+// var dbPath = "yash:9276807345@ds059207.mlab.com"
+// var server = new Server(dbPath, 59207, {auto_reconnect: true});
 db = new Db('patient-clinical-data-management', server);
 
 //Open connection with database
@@ -50,8 +50,16 @@ exports.findById = function(req, res) {
 //find all users from database
 exports.findAll = function(req, res) {
     db.collection('users', function(err, collection) {
-        collection.find().toArray(function(err, items) {
-            res.send(items);
+        collection.find({"uDesignation":"Doctor"}).toArray(function(err, items) {
+            res.send({"doctors":items});
+        });
+    });
+};
+
+exports.findNurseAll = function(req, res) {
+    db.collection('users', function(err, collection) {
+        collection.find({"uDesignation":"Nurse"}).toArray(function(err, items) {
+            res.send({"nurses":items});
         });
     });
 };

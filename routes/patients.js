@@ -14,10 +14,10 @@ var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
 
-//var server = new Server('localhost', 27017, {auto_reconnect: true});
+var server = new Server('localhost', 27017, {auto_reconnect: true});
 
-var dbPath = "yash:9276807345@ds059207.mlab.com"
-var server = new Server(dbPath, 59207, {auto_reconnect: true});
+// var dbPath = "yash:9276807345@ds059207.mlab.com"
+// var server = new Server(dbPath, 59207, {auto_reconnect: true});
 
 db = new Db('patient-clinical-data-management', server);
 
@@ -41,7 +41,7 @@ exports.findById = function(req, res) {
             if(err) {
                 res.send({"Status":"Error","Message":err});
             }
-            else if(item.length == 0)  {
+            else if(item == null)  {
                 res.send({"Status":"Error","Message":"No Patient Data available."});
             }
             else    {
@@ -62,7 +62,7 @@ exports.findAll = function(req, res) {
                 res.send({"Status":"Error","Message":"No Patient Data available."});
             }
             else    {
-                res.send(items);
+                res.send({"patients" : items});
             }
         });
     });
