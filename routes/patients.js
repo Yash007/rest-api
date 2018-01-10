@@ -5,7 +5,7 @@
     Subject: Node JS project
     keywords: RESTFull API development
     Description: Patients.js file provide all functionality of patients collection.
-    Milestone - 2 - Dec 12, 2017
+    Milestone - final presentation - Jan 09, 2018
 */
 
 var mongo = require('mongodb');
@@ -90,18 +90,6 @@ exports.addPatient = function(req, res) {
     }
     else if(patient.InsurancePlan == undefined)   {
         res.send({"Status":"Error!!","Message":"InsurancePlan Not Found"});  
-    }
-    else if(patient.EmergencyContact == undefined)   {
-        res.send({"Status":"Error!!","Message":"EmergencyContact Not Found"});  
-    }
-    else if(patient.EmergencyContact.Name == undefined)   {
-        res.send({"Status":"Error!!","Message":"EmergencyContact.Name Not Found"});  
-    }
-    else if(patient.EmergencyContact.Relationship == undefined)   {
-        res.send({"Status":"Error!!","Message":"EmergencyContact.Relationship Not Found"});  
-    }
-    else if(patient.EmergencyContact.Telephone == undefined)   {
-        res.send({"Status":"Error!!","Message":"EmergencyContact.Telephone Not Found"});  
     }
     else if(patient.BloodType == undefined)   {
         res.send({"Status":"Error!!","Message":"BloodType Not Found"});  
@@ -262,7 +250,7 @@ exports.findRecords = function(req, res) {
                 res.send({"Status":"Error","Message":"No Patient Data available."});
             }
             else    {
-                res.send(item.ClinicalData);
+                res.send({ "records":item.ClinicalData });
             }
         });
     });

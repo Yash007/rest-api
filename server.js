@@ -4,7 +4,7 @@
     College ID: 300967186
     Subject: Node JS project
     keywords: RESTFull API development
-    Milestone - 2 - Dec 12, 2017
+    Milestone - final presentation - Jan 09, 2018
 */
 
 var express = require('express'),

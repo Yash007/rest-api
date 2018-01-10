@@ -5,7 +5,7 @@
     Subject: Node JS project
     keywords: RESTFull API development
     description: Users.js file for provide all functionality of users collection
-    Milestone - 2 - Dec 12, 2017
+    Milestone - final presentation - Jan 09, 2018
     Note: SHA1 encryption code taken from
             http://coursesweb.net/javascript/sha1-encrypt-data_cs
 
@@ -18,12 +18,14 @@ var Server = mongo.Server,
     BSON = mongo.BSONPure;
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
-// var dbPath = "yash:9276807345@ds059207.mlab.com"
-// var server = new Server(dbPath, 59207, {auto_reconnect: true});
+// // var dbPath = "yash:9276807345@ds059207.mlab.com"
+// // var server = new Server(dbPath, 59207, {auto_reconnect: true});
 db = new Db('patient-clinical-data-management', server);
+
 
 //Open connection with database
 db.open(function(err, db) {
+
     if(!err) {
         console.log("Connected to 'patient-clinical-data-management' database");
         db.collection('users', {strict:true}, function(err, collection) {
@@ -31,6 +33,9 @@ db.open(function(err, db) {
                 console.log("The 'users' collection doesn't exist. Creating it with sample data...");
             }
         });
+    }
+    else    {
+        console.log(err);
     }
 });
 
